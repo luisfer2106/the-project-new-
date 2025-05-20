@@ -29,7 +29,7 @@
   padding: 20px;
   background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
   position: absolute; /* Permite que se mueva libremente */
-  right: 1%; /* Mueve el formulario hacia la derecha */
+  right: 56%; /* Mueve el formulario hacia la derecha */
 }
 
 /* Estilos para los inputs */

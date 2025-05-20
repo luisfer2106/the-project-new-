@@ -1,0 +1,100 @@
+
+/* Eliminar cualquier scroll global en el body */
+
+
+/* Contenedor del login */
+
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+ 
+}
+
+
+/* Estilos del formulario aplicados a cualquier `form` dentro de `.login-container` */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  width: 400px; /* Tamaño fijo */
+  max-width: 90%; /* Se adapta en pantallas pequeñas */
+  height: 85%;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+  position: absolute; /* Permite que se mueva libremente */
+  right: 1%; /* Mueve el formulario hacia la derecha */
+}
+
+/* Estilos para los inputs */
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Botón de ingreso */
+.login-container button {
+    width: 30%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-container button:hover {
+  transform: scale(1.05); /* Hace que el botón crezca ligeramente */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Agrega una sombra más elegante */
+}
+
+.login-container button:active {
+  transform: scale(0.95); /* Hace que el botón se encoja brevemente al hacer clic */
+}
+
+/* Contenedor de los botones adicionales */
+.text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los botones */
+}
+
+/* Estilos de los botones adicionales */
+.register-btn, .forgot-password {
+  background: none !important;
+  border: none !important;
+  width: fit-content !important; /* Se ajusta automáticamente al contenido */
+  padding: 0 !important;
+  color: inherit !important;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center; /* Centra horizontalmente el contenido */
+}
+
+
+/* Animación de entrada */
+.register-form {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.show-form {
+  opacity: 1;
+  transform: translateY(0);
+}
+

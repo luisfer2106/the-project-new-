@@ -1,0 +1,124 @@
+[
+  {
+    "id": "e8a2f5e1-8d3d-4f57-bb97-b93f621df5bb",
+    "name": "God of War Ragnarok",
+    "platform": "PS5",
+    "image": "https://media.vandal.net/m/90451/god-of-war-ragnarok-20221131016774_1.jpg",
+    "description": "Juego de acción y aventura.",
+    "price": 25
+  },
+  {
+    "id": "34f6d4b7-bf32-432f-809f-3fd6a29adcc5",
+    "name": "Black Myth Wukong",
+    "platform": "PS5",
+    "image": "https://juegosdigitalesvenezuela.com/files/images/productos/1718149590-black-myth-wukong-ps5-pre-orden-0.webp",
+    "description": "Juego de rol de acción basado en la mitología china.",
+    "price": 30.99
+  },
+  {
+    "id": "fcd8c2f6-5c48-4641-b529-dbe8a3dd8e78",
+    "name": "Final Fantasy",
+    "platform": "PS5",
+    "image": "https://venezuelajuegosdigitales.com/wp-content/uploads/2023/07/Final-Fantasy-XVI-PS5.png",
+    "description": "Reloj inteligente con monitor de frecuencia cardíaca, GPS integrado y resistencia al agua.",
+    "price": 35.99
+  },
+  {
+    "id": "87b3db70-e0b5-4a16-89f1-8fc470115176",
+    "name": "The Last of US Part II",
+    "platform": "PS5",
+    "image": "https://juegosdigitalesvenezuela.com/files/images/productos/1718034357-dragon-ball-sparking-zero-pre-orden-0.webp",
+    "description": "Smartphone con conectividad 5G, pantalla OLED de 6.5 pulgadas y 128GB de almacenamiento interno.",
+    "price": 20.99
+  },
+  {
+    "id": "f4f71262-f5be-40d4-9d6a-b39928f0c1fa",
+    "name": "Astro Bot",
+    "platform": "PS5",
+    "ps5": "",
+    "image": "https://venezuelajuegosdigitales.com/wp-content/uploads/2023/06/astro-rot-rescue-PS5.png",
+    "description": "Auriculares inalámbricos con cancelación de ruido activa y 30 horas de duración de la batería.",
+    "price": 40
+  },
+  {
+    "id": "2f484d4f-0e1f-4c5f-907f-f8b1b39d0a7a",
+    "name": "Red Dead Redemption II",
+    "platform": "PS4",
+    "image": "https://mundogamervenezuela.com/cdn/shop/products/red-dead-redemption-ii-ps4_493x.jpg?v=1642277522",
+    "description": "Teclado mecánico retroiluminado con switches personalizables y múltiples efectos de iluminación.",
+    "price": 15.99
+  },
+  {
+    "id": "dafeaab7-60a5-47b2-98d1-8b9ed1e8131f",
+    "name": "Spider-Man Miles Morales",
+    "platform": "PS4",
+    "image": "https://venezuelajuegosdigitales.com/wp-content/uploads/2023/11/Spider-man-miles-Morales-ps4-1.png",
+    "description": "Cámara de acción con grabación en 4K, estabilización de imagen y resistente al agua.",
+    "price": 27.99
+  },
+  {
+    "id": "45d9a2eb-2e2d-48d3-bf34-80a51052c12b",
+    "name": "Spiderman-Man",
+    "platform": "PS4",
+    "image": "https://venezuelajuegosdigitales.com/wp-content/uploads/2022/10/1629828487-marvels-spider-man-game-of-the-year-edition-ps4-1.jpg",
+    "description": "Tableta gráfica con lápiz digital de alta precisión, ideal para diseño gráfico y dibujo digital.",
+    "price": 26.99
+  },
+  {
+    "id": "f017a7c3-8a83-4f8b-86e6-1fa87236f70e",
+    "name": "Grand theft Auto V",
+    "platform": "PS4",
+    "image": "https://pixelgames.io/cdn/shop/files/6_6309470e-dab7-45fd-9425-73377f291bca.webp?v=1738189805",
+    "description": "Cargador inalámbrico rápido compatible con dispositivos habilitados para Qi.",
+    "price": 39.99
+  },
+  {
+    "id": "314db541-4467-4628-9731-d64d32ef79e2",
+    "name": "Ghost of Tsushima",
+    "platform": "PS4",
+    "image": "https://www.backwards-compatible.com/site/assets/files/1508/71uggk1wf3l__ac_sl1000_.400x518.jpg",
+    "description": "Barra de sonido con tecnología Dolby Atmos para un sonido envolvente y conectividad Bluetooth.",
+    "price": 20.99
+  },
+  {
+    "id": "1e98e5fc-e86a-4f60-a877-b66a3be20b94",
+    "name": "God of War III Remastered",
+    "platform": "PS4",
+    "image": "https://mundogamervenezuela.com/cdn/shop/products/god-of-war-3_2.jpg?v=1642268224",
+    "description": "Mouse ergonómico con conectividad Bluetooth y ajuste de DPI, ideal para trabajo o gaming.",
+    "price": 49.99
+  },
+  {
+    "id": "0c167d52-1711-47e0-bbaa-f3efedf7d346",
+    "name": "Halo Infinite",
+    "platform": "XBOX",
+    "image": "https://venezuelajuegosdigitales.com/wp-content/uploads/2023/11/Halo-infinite-Serie-X-S-1.png",
+    "description": "Televisor inteligente con resolución 4K y aplicaciones integradas como Netflix, YouTube, y más.",
+    "price": 15.99
+  },
+  {
+    "id": "82ba558a-2520-4bb8-89e0-370d49f3e283",
+    "name": "FC25",
+    "platform": "XBOX",
+    "image": "https://pixelgames.io/cdn/shop/files/2_6b400842-bd31-4932-92c4-1f6874bbb4aa.webp?v=1738194865",
+    "description": "Disco duro externo de 2TB con conectividad USB 3.0, ideal para almacenamiento adicional o respaldo de archivos.",
+    "price": 25.99
+  },
+  {
+    "id": "90c02be3-0a2d-4704-84b1-383c06ec63e5",
+    "name": "NBA 2k25",
+    "platform": "XBOX",
+    "image": "https://http2.mlstatic.com/D_NQ_NP_646237-MLU78636675836_092024-O.webp",
+    "description": "Smartwatch de alta gama con pantalla AMOLED y múltiples funciones de salud y fitness.",
+    "price": 39.99
+  },
+  {
+    "id": "ad2f0d34-1b60-47e7-8f41-58d7a6e6b934",
+    "name": "Resident Evil2",
+    "platform": "PC",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAKBcQLNJImDM8S4MHhkkhuedlZD90UGBlkQ&s",
+    "description": "Cámara de seguridad con conectividad WiFi, detección de movimiento y grabación en Full HD.",
+    "price": 6.99
+  }
+
+]

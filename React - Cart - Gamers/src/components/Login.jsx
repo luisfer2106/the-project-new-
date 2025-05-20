@@ -6,6 +6,7 @@ import { FaUser, FaExclamationCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { FaSignInAlt } from "react-icons/fa";
 import VideoFondo from "./VideoFondo/VideoFondo";
+import { fetchUserData } from './LoginUser/ServiceUser';
 
 
 function Login() {
@@ -20,9 +21,17 @@ function Login() {
   const [phone, setPhone] = useState("");
   const [forgotEmail, setForgotEmail] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Usuario:", username, "Contraseña:", password);
+  
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const data = await fetchUserData();
+      console.log('Datos obtenidos:', data);
+    } catch (error) {
+      console.error('Error al consumir la API:', error.response ? error.response.data : error.message);
+    }
   };
 
   const handleRegisterSubmit = (e) => {

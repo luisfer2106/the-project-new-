@@ -7,7 +7,7 @@ C:\NEW PROJECT PERSONAL\the-project-new-\react-shopping-cart-main
 PASO 2: REALIZAR UN git add . DESPÚES DE HACER LOS CAMBIOS
 
 PASO 3: HACER EL COMMIT CON EL COMENATARIO QUE DESEES
-git commit -m "Nuevos Cambios Gamers"
+git commit -m "Frontend - Cart - React"
 
 PASO 4 Y FINAL: EJECUTA EL COMANDO PUSH DE LA SIGUIENTE MANERA 
 git push origin main
@@ -15,3 +15,5 @@ git push origin main
 
 
 ¡HAY VIDA Y SALUD!
+
+

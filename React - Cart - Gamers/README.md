@@ -1,7 +1,7 @@
 # react-shopping-cart
 
-Carrito de compras básico en reactjs, usando react context api para almacenar el estado
+Carrito de Compra Básico, desarrollado en React.
 
 ## Screenshot
 
-![alt text](screenshot.png)
+![alt text](Screenshot22.png)

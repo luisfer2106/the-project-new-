@@ -6,7 +6,7 @@ Carrito de Compra Básico, desarrollado en React.
 
 ![alt text](Screenshot22.png)
 
-# Login to User and Admind
+# Login to User and Admin
 
 Carrito de Compra Básico, desarrollado en React.
 

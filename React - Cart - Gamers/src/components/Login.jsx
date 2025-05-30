@@ -27,7 +27,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const data = await fetchUserData();
+      const data = await fetchUserData(username, password);
       console.log('Datos obtenidos:', data);
     } catch (error) {
       console.error('Error al consumir la API:', error.response ? error.response.data : error.message);

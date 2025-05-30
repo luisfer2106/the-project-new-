@@ -1,14 +1,19 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8039/api/UserGamers';
-
-export const fetchUserData = async () => {
+const API_URL = 'http://localhost:8039/api/UserGamers/login';
+          
+export const fetchUserData = async (username, password) => {
   try {
-    const response = await axios.get(API_URL);
-    console.log('Datos obtenidos:', response.data);
+    const body = {
+      USERNAME: username,
+      CONTRASEÑA_HASH: password
+    };
+
+    const response = await axios.post(API_URL, body); // Enviar datos en el cuerpo de la solicitud
+    console.log("✅ Datos obtenidos:", response.data);
     return response.data;
   } catch (error) {
-    console.error('Error:', error.response ? error.response.data : error.message);
+    console.error("❌ Error:", error.response ? error.response.data : error.message);
     throw error;
   }
 };

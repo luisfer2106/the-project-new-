@@ -5,6 +5,7 @@ import ProductList from "./components/product-list";
 import Login from "./components/Login"; // Asegúrate de que la ruta sea correcta
 import NewPassword from "./components/Newpassword"; // Importamos el nuevo archivo
 import dataProducts from "./data.json";
+import AdminProduct from "./components/LoginUser/Admin-product";
 
 function App() {
   const [filteredProducts, setFilteredProducts] = useState(dataProducts);
@@ -34,6 +35,9 @@ function App() {
 
         {/* Ruta para Login */}
         <Route path="/login" element={<Login />} />
+
+        {/* Ruta para Login admin */}
+         <Route path="/admin-product" element={<AdminProduct />} />
 
         {/* Nueva ruta para recuperación de contraseña */}
         <Route path="/reset-password" element={<NewPassword />} />

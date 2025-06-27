@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/header";
 import ProductList from "./components/product-list";
-import Login from "./components/Login"; // Asegúrate de que la ruta sea correcta
-import NewPassword from "./components/Newpassword"; // Importamos el nuevo archivo
+import Login from "./components/LoginUser/Login"; // Asegúrate de que la ruta sea correcta
+import NewPassword from "./components/LoginUser/Newpassword"; // Importamos el nuevo archivo
 import dataProducts from "./data.json";
 import AdminProduct from "./components/LoginUser/Admin-product";
+import PrivateRoute from "./components/LoginUser/PrivateRoute";
 
 function App() {
   const [filteredProducts, setFilteredProducts] = useState(dataProducts);
@@ -36,11 +37,21 @@ function App() {
         {/* Ruta para Login */}
         <Route path="/login" element={<Login />} />
 
-        {/* Ruta para Login admin */}
-         <Route path="/admin-product" element={<AdminProduct />} />
+              <Route
+                path="/admin-product"
+                element={
+                  <PrivateRoute>
+                    <AdminProduct />
+                  </PrivateRoute>
+                }
+              />
 
         {/* Nueva ruta para recuperación de contraseña */}
         <Route path="/reset-password" element={<NewPassword />} />
+
+        {/* Nueva ruta para eleimianr la session */}
+        <Route path="/privateRoute" element={<PrivateRoute />} />
+
       </Routes>
     </div>
   );

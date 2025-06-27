@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "emailjs-com"; // Importamos EmailJS
-import "../css/login.css";
+import "../../css/login.css";
 import { FaUser, FaExclamationCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { FaSignInAlt } from "react-icons/fa";
-import VideoFondo from "./VideoFondo/VideoFondo";
-import { fetchUserData } from './LoginUser/ServiceAdmin';
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import VideoFondo from "../VideoFondo/VideoFondo";
+import { fetchUserData } from './ServiceAdmin';
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
@@ -21,6 +21,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [forgotEmail, setForgotEmail] = useState("");
+
+  const navigate = useNavigate(); // ✅ Añade esto justo aquí
 
   //#region MÉTODO-REGISTRAR: Para enivar parametros a api registrar
   const handleRegisterSubmit = (e) => {
@@ -64,16 +66,31 @@ function Login() {
   //#endregion
 
   //#region MÉTODO: Para recibir y enviar parametros a mi service / LOGIN
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+    const handleSubmit = async (event) => {
+      event.preventDefault();
 
-    try {
-      const data = await fetchUserData(username, password);
-      console.log('Datos obtenidos:', data);
-    } catch (error) {
-      console.error('Error al consumir la API:', error.response ? error.response.data : error.message);
-    }
-  };
+      try {
+        const data = await fetchUserData(username, password);
+        console.log("Datos obtenidos:", data);
+
+        if (data.success) {
+          localStorage.setItem("id_rol", data.id_rol); // ✅ Guarda el rol para la sesión
+
+          if (data.id_rol === 1) {
+            navigate("/admin-product");
+          } else {
+            alert("Acceso denegado: no eres administrador.");
+          }
+        } else {
+          alert(data.message || "Error de autenticación");
+        }
+      } catch (error) {
+        console.error(
+          "Error al consumir la API:",
+          error.response ? error.response.data : error.message
+        );
+      }
+    };
   //#endregion
 
   return (
@@ -124,16 +141,23 @@ function Login() {
             <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">Ingresar</button>
 
             <div className="text-center mt-4">
-              <button onClick={() => setShowRegisterForm(true)} className="register-btn text-blue-500 hover:underline flex items-center gap-2">
-                <FaUser /> Registrarse
-              </button>
-              <br />
-              <button onClick={() => setShowForgotPasswordForm(true)} className="forgot-password text-gray-500 hover:underline mt-2 flex items-center gap-2">
-                <FaExclamationCircle /> ¿Olvidaste tu contraseña?
-              </button>
+            <button
+                  type="button" // 🔒 Evita enviar el form
+                  onClick={() => setShowRegisterForm(true)}
+                  className="register-btn text-blue-500 hover:underline flex items-center gap-2"
+                >
+                  <FaUser /> Registrarse
+                </button>
+
+                <button
+                  type="button" // 🔒 Evita enviar el form
+                  onClick={() => setShowForgotPasswordForm(true)}
+                  className="forgot-password text-gray-500 hover:underline mt-2 flex items-center gap-2"
+                >
+                  <FaExclamationCircle /> ¿Olvidaste tu contraseña?
+                </button>
             </div>
           </motion.form>
-
 
         ) : null}
 

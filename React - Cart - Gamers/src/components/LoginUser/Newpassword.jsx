@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion"; // Importamos Framer Motion
-import "../css/NewPassword.css"; // Importamos los estilos
+import "../../css/NewPassword.css"; // Importamos los estilos
 
 function Newpassword() {
   const [newPassword, setNewPassword] = useState("");

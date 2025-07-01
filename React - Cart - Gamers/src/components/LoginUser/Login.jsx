@@ -6,7 +6,7 @@ import { FaUser, FaExclamationCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { FaSignInAlt } from "react-icons/fa";
 import VideoFondo from "../VideoFondo/VideoFondo";
-import { fetchUserData } from './ServiceAdmin';
+import { fetchUserData } from './ServiceAdmin/ServiceAdmin';
 import { useNavigate } from "react-router-dom";
 
 

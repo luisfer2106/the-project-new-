@@ -8,6 +8,7 @@ import dataProducts from "./data.json";
 import AdminProduct from "./components/LoginUser/Admin-product";
 import PrivateRoute from "./components/LoginUser/PrivateRoute";
 
+
 function App() {
   const [filteredProducts, setFilteredProducts] = useState(dataProducts);
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,6 +46,7 @@ function App() {
                   </PrivateRoute>
                 }
               />
+              
 
         {/* Nueva ruta para recuperación de contraseña */}
         <Route path="/reset-password" element={<NewPassword />} />

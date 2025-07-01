@@ -1,0 +1,131 @@
+/* Contenedor general que envuelve todo */
+.admin-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Contenedor de la cabecera: título, subtítulo, botones */
+.admin-container {
+  text-align: center;
+  padding: 50px 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.admin-subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.admin-button,
+.logout-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.admin-button {
+  background-color: #007bff;
+}
+
+.logout-button {
+  background-color: #dc3545;
+}
+
+/* Tabla separada del contenedor principal */
+.tabla-productos {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 40px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Filtro del buscador */
+.filtro-input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 250px;
+  max-width: 100%;
+}
+
+/* Botones de acción de la tabla */
+.acciones button {
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  background: none;
+}
+
+/* Comportamiento del contenedor de la tabla (datatable) */
+div.__rdt_Table {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+.logout-fixed {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  margin-top: -20px;
+}
+
+.filtro-agregar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.add-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}

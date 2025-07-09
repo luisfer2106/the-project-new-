@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
-import { fetchProductData } from "./ServiceAdmin/ServiceProduct"; // ajusta la ruta si es necesario
+import { fetchProductData } from "./ServiceAdmin/ServiceProduct";
 import "./UserAdmin.css";
 import { FiLogOut, FiPlus } from "react-icons/fi";
+import { Modal, Button } from "antd"; // <-- Importa Modal y Button de antd
 
 
 const AdminProduct = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [filterText, setFilterText] = useState("");
+  const [modalOpen, setModalOpen] = useState(false); // Estado para el modal
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [modalText, setModalText] = useState("Content of the modal");
+  const [nombre, setNombre] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [cantidad, setCantidad] = useState("");
+  const [plataforma, setPlataforma] = useState("");
+  const [imagen, setImagen] = useState("");
 
   useEffect(() => {
     const idRol = parseInt(localStorage.getItem("id_rol"));
@@ -31,8 +40,24 @@ const AdminProduct = () => {
     navigate("/login");
   };
 
+  // Mostrar el modal al hacer clic en agregar
   const handleAgregar = () => {
-    alert("🚧 Función agregar aún no implementada.");
+    setModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setModalText("El modal se cerrará en dos segundos");
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setModalOpen(false);
+      setConfirmLoading(false);
+      setModalText("Content of the modal");
+    }, 2000);
+  };
+
+  const handleCancel = () => {
+    setModalOpen(false);
+    setModalText("Content of the modal");
   };
 
   const handleEditar = (producto) => {
@@ -111,36 +136,104 @@ const AdminProduct = () => {
   );
 
   return (
-    <div className="admin-wrapper">
-     <div className="admin-actions">
-        <button className="admin-button" onClick={handleAgregar}>
-          <FiPlus size={20} /> {/* Ícono de agregar */}
-        </button>
-        <button className="logout-button" onClick={handleLogout}>
-          <FiLogOut size={20} /> {/* Ícono de cerrar sesión */}
-        </button>
-      </div>
+    <div className="min-h-screen w-full bg-[#0f172a] relative">
+      {/* Blue Radial Glow Background */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `radial-gradient(circle 600px at 50% 50%, rgba(59,130,246,0.3), transparent)`,
+        }}
+      />
+      {/* Tu contenido principal */}
+      <div className="relative z-10">
+        <div className="admin-wrapper">
+          <div className="admin-actions" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <button className="admin-button" onClick={handleAgregar}>
+              <FiPlus size={20} /> {/* Ícono de agregar */}
+            </button>
+            <button className="logout-button" onClick={handleLogout} style={{ marginLeft: 'auto' }}>
+              <FiLogOut size={20} /> {/* Ícono de cerrar sesión */}
+            </button>
+          </div>
 
+          {/* Modal de Ant Design */}
+          <Modal
+            title="Agregar producto"
+            open={modalOpen}
+            onOk={handleOk}
+            confirmLoading={confirmLoading}
+            onCancel={handleCancel}
+          >
+            <form>
+              <div style={{ marginBottom: 10 }}>
+                <label>Nombre:</label>
+                <input
+                  type="text"
+                  value={nombre}
+                  onChange={e => setNombre(e.target.value)}
+                  style={{ width: "100%" }}
+                />
+              </div>
+              <div style={{ marginBottom: 10 }}>
+                <label>Descripción:</label>
+                <input
+                  type="text"
+                  value={descripcion}
+                  onChange={e => setDescripcion(e.target.value)}
+                  style={{ width: "100%" }}
+                />
+              </div>
+              <div style={{ marginBottom: 10 }}>
+                <label>Cantidad:</label>
+                <input
+                  type="number"
+                  value={cantidad}
+                  onChange={e => setCantidad(e.target.value)}
+                  style={{ width: "100%" }}
+                />
+              </div>
+              <div style={{ marginBottom: 10 }}>
+                <label>Plataforma:</label>
+                <input
+                  type="text"
+                  value={plataforma}
+                  onChange={e => setPlataforma(e.target.value)}
+                  style={{ width: "100%" }}
+                />
+              </div>
+              <div style={{ marginBottom: 10 }}>
+                <label>Imagen (URL):</label>
+                <input
+                  type="text"
+                  value={imagen}
+                  onChange={e => setImagen(e.target.value)}
+                  style={{ width: "100%" }}
+                />
+              </div>
+            </form>
+          </Modal>
 
-      <div className="tabla-productos">
-        <DataTable
-          title="Productos"
-          columns={columns}
-          data={filteredData}
-          pagination
-          highlightOnHover
-          responsive
-          subHeader
-          subHeaderComponent={
-            <input
-              type="text"
-              placeholder="🔎 Buscar producto"
-              className="filtro-input"
-              value={filterText}
-              onChange={e => setFilterText(e.target.value)}
+          <div className="tabla-productos">
+            <DataTable
+              title="Productos"
+              columns={columns}
+              data={filteredData}
+              pagination
+              highlightOnHover
+              responsive
+              subHeader
+              subHeaderComponent={
+                <input
+                  type="text"
+                  placeholder="🔎 Buscar producto"
+                  className="filtro-input"
+                  value={filterText}
+                  onChange={e => setFilterText(e.target.value)}
+                />
+              }
             />
-          }
-        />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -96,3 +96,8 @@
   transform: translateY(0);
 }
 
+
+.body-login {
+  overflow: hidden;
+  height: 100%;
+}

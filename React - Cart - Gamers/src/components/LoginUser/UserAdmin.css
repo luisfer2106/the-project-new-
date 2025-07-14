@@ -196,3 +196,27 @@ div.__rdt_Table {
 .modal-agregar-cerrar:hover {
   color: #dc3545;
 }
+
+.shadow-table {
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18), 0 1.5px 4px 0 rgba(0,0,0,0.12);
+  border-radius: 16px;
+  background: #fff;
+  padding: 24px 16px;
+  margin-top: 32px;
+}
+
+/* Alternar colores de filas en DataTable */
+.rdt_TableBody .rdt_TableRow:nth-child(odd) {
+  background-color: #f7f7fa; /* Gris claro */
+}
+.rdt_TableBody .rdt_TableRow:nth-child(even) {
+  background-color: #fff; /* Blanco */
+}
+
+/* Opcional: bordes suaves y separación */
+.rdt_TableRow {
+  border-bottom: 1px solid #e5e7eb;
+}
+.rdt_TableCell {
+  font-size: 1rem;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "emailjs-com"; // Importamos EmailJS
 import "../../css/login.css";
@@ -23,6 +23,11 @@ function Login() {
   const [forgotEmail, setForgotEmail] = useState("");
 
   const navigate = useNavigate(); // ✅ Añade esto justo aquí
+
+  useEffect(() => {
+    document.body.classList.add('body-login');
+    return () => document.body.classList.remove('body-login');
+  }, []);
 
   //#region MÉTODO-REGISTRAR: Para enivar parametros a api registrar
   const handleRegisterSubmit = (e) => {
@@ -94,7 +99,7 @@ function Login() {
   //#endregion
 
   return (
-    <div className="min-h-screen w-full bg-[#0f172a] relative overflow-hidden">
+    <div className="min-h-screen w-full bg-[#020617] relative overflow-hidden">
       {/* Blue Radial Glow Background */}
       <div
         className="absolute inset-0 z-0"
@@ -105,20 +110,30 @@ function Login() {
       {/* Bloque de bienvenida centrado */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center pointer-events-none select-none">
   {/* Icono de control animado */}
-  <div className="controller-icon mx-auto mb-2 animate-controller-bounce">
-    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-      <rect x="8" y="32" width="48" height="16" rx="8" fill="#38bdf8"/>
-      <ellipse cx="32" cy="32" rx="24" ry="16" fill="#0ea5e9"/>
-      {/* Cruz direccional */}
-      <rect x="27" y="27" width="10" height="4" rx="2" fill="#fff"/>
-      <rect x="30" y="24" width="4" height="10" rx="2" fill="#fff"/>
-      {/* Botones */}
-      <circle cx="44" cy="28" r="3" fill="#fff"/>
-      <circle cx="48" cy="36" r="2" fill="#fff"/>
-      <circle cx="40" cy="36" r="2" fill="#fff"/>
-      {/* Joystick izquierdo */}
-      <circle cx="22" cy="36" r="3" fill="#fff"/>
-    </svg>
+  <div className="controller-icon mx-auto mb-4 animate-controller-bounce">
+  <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Cuerpo principal blanco con bordes azules */}
+    <path d="M10 30 Q5 20 20 10 Q40 0 60 10 Q75 20 70 30 Q68 36 60 34 Q55 33 40 33 Q25 33 20 34 Q12 36 10 30Z" fill="#f4f6fa" stroke="#3b82f6" strokeWidth="2"/>
+    {/* Panel táctil central */}
+    <rect x="32" y="10" width="16" height="8" rx="4" fill="#e0e7ef" stroke="#94a3b8" strokeWidth="1"/>
+    {/* Stick izquierdo */}
+    <circle cx="26" cy="24" r="3" fill="#222" stroke="#94a3b8" strokeWidth="1"/>
+    {/* Stick derecho */}
+    <circle cx="54" cy="24" r="3" fill="#222" stroke="#94a3b8" strokeWidth="1"/>
+    {/* Botón D-Pad (izquierda) */}
+    <rect x="18" y="18" width="1.5" height="6" rx="0.75" fill="#3b82f6"/>
+    <rect x="15" y="21" width="6" height="1.5" rx="0.75" fill="#3b82f6"/>
+    {/* Botones (derecha) */}
+    <circle cx="62" cy="20" r="1.2" fill="#ef4444"/>
+    <circle cx="65" cy="23" r="1.2" fill="#22d3ee"/>
+    <circle cx="62" cy="26" r="1.2" fill="#facc15"/>
+    <circle cx="59" cy="23" r="1.2" fill="#a3e635"/>
+    {/* Botón central PS */}
+    <ellipse cx="40" cy="20" rx="1.5" ry="1" fill="#64748b"/>
+    {/* Gatillos (superior) */}
+    <rect x="18" y="8" width="6" height="2" rx="1" fill="#cbd5e1"/>
+    <rect x="56" y="8" width="6" height="2" rx="1" fill="#cbd5e1"/>
+  </svg>
   </div>
   <h1 className="kinggames-title mb-4 animate-pulse">
     ¡BIENVENIDO A<br />

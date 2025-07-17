@@ -7,6 +7,7 @@ import NewPassword from "./components/LoginUser/Newpassword"; // Importamos el n
 import dataProducts from "./data.json";
 import AdminProduct from "./components/LoginUser/Admin-product";
 import PrivateRoute from "./components/LoginUser/PrivateRoute";
+import UserBanner from "./components/UserBanner";
 
 
 function App() {
@@ -53,6 +54,8 @@ function App() {
 
         {/* Nueva ruta para eleimianr la session */}
         <Route path="/privateRoute" element={<PrivateRoute />} />
+
+        <Route path="/user-banner" element={<UserBanner />} />
 
       </Routes>
     </div>

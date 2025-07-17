@@ -22,11 +22,16 @@ export const fetchUserData = async (username, password) => {
 
     // 📦 Retorna también el id_rol
     if (response.data.message === "¡Logueado con éxito!") {
-      return {
-        success: true,
-        message: response.data.message,
-        id_rol: response.data.id_rol, // ← Aquí está el cambio clave
-      };
+  // ✅ Guarda el nombre en sessionStorage
+       
+
+        return {
+          success: true,
+          message: response.data.message,
+          id_rol: response.data.id_rol,
+          nombre: response.data.nombre,
+          nombre_rol: response.data.nombre_rol,
+        };
     } else {
       return {
         success: false,

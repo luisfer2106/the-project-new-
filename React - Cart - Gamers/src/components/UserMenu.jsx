@@ -3,6 +3,7 @@ import { FaChevronDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom"; // Importamos la navegación
 
 function UserMenu() {
+  console.log("UserMenu component rendered");
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate(); // Inicializamos la navegación
 

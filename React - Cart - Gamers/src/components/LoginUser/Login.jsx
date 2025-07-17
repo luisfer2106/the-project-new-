@@ -80,10 +80,14 @@ function Login() {
 
         if (data.success) {
           localStorage.setItem("id_rol", data.id_rol); // ✅ Guarda el rol para la sesión
-
+          localStorage.setItem("nombre", data.nombre); // ✅ Guarda el nombre del usuario
+          
           if (data.id_rol === 1) {
             navigate("/admin-product");
           } else {
+         
+            navigate("/");
+
             alert("Acceso denegado: no eres administrador.");
           }
         } else {
@@ -109,41 +113,41 @@ function Login() {
       />
       {/* Bloque de bienvenida centrado */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center pointer-events-none select-none">
-  {/* Icono de control animado */}
-  <div className="controller-icon mx-auto mb-4 animate-controller-bounce">
-  <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Cuerpo principal blanco con bordes azules */}
-    <path d="M10 30 Q5 20 20 10 Q40 0 60 10 Q75 20 70 30 Q68 36 60 34 Q55 33 40 33 Q25 33 20 34 Q12 36 10 30Z" fill="#f4f6fa" stroke="#3b82f6" strokeWidth="2"/>
-    {/* Panel táctil central */}
-    <rect x="32" y="10" width="16" height="8" rx="4" fill="#e0e7ef" stroke="#94a3b8" strokeWidth="1"/>
-    {/* Stick izquierdo */}
-    <circle cx="26" cy="24" r="3" fill="#222" stroke="#94a3b8" strokeWidth="1"/>
-    {/* Stick derecho */}
-    <circle cx="54" cy="24" r="3" fill="#222" stroke="#94a3b8" strokeWidth="1"/>
-    {/* Botón D-Pad (izquierda) */}
-    <rect x="18" y="18" width="1.5" height="6" rx="0.75" fill="#3b82f6"/>
-    <rect x="15" y="21" width="6" height="1.5" rx="0.75" fill="#3b82f6"/>
-    {/* Botones (derecha) */}
-    <circle cx="62" cy="20" r="1.2" fill="#ef4444"/>
-    <circle cx="65" cy="23" r="1.2" fill="#22d3ee"/>
-    <circle cx="62" cy="26" r="1.2" fill="#facc15"/>
-    <circle cx="59" cy="23" r="1.2" fill="#a3e635"/>
-    {/* Botón central PS */}
-    <ellipse cx="40" cy="20" rx="1.5" ry="1" fill="#64748b"/>
-    {/* Gatillos (superior) */}
-    <rect x="18" y="8" width="6" height="2" rx="1" fill="#cbd5e1"/>
-    <rect x="56" y="8" width="6" height="2" rx="1" fill="#cbd5e1"/>
-  </svg>
+    {/* Icono de control animado */}
+    <div className="controller-icon mx-auto mb-4 animate-controller-bounce">
+    <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Cuerpo principal blanco con bordes azules */}
+      <path d="M10 30 Q5 20 20 10 Q40 0 60 10 Q75 20 70 30 Q68 36 60 34 Q55 33 40 33 Q25 33 20 34 Q12 36 10 30Z" fill="#f4f6fa" stroke="#3b82f6" strokeWidth="2"/>
+      {/* Panel táctil central */}
+      <rect x="32" y="10" width="16" height="8" rx="4" fill="#e0e7ef" stroke="#94a3b8" strokeWidth="1"/>
+      {/* Stick izquierdo */}
+      <circle cx="26" cy="24" r="3" fill="#222" stroke="#94a3b8" strokeWidth="1"/>
+      {/* Stick derecho */}
+      <circle cx="54" cy="24" r="3" fill="#222" stroke="#94a3b8" strokeWidth="1"/>
+      {/* Botón D-Pad (izquierda) */}
+      <rect x="18" y="18" width="1.5" height="6" rx="0.75" fill="#3b82f6"/>
+      <rect x="15" y="21" width="6" height="1.5" rx="0.75" fill="#3b82f6"/>
+      {/* Botones (derecha) */}
+      <circle cx="62" cy="20" r="1.2" fill="#ef4444"/>
+      <circle cx="65" cy="23" r="1.2" fill="#22d3ee"/>
+      <circle cx="62" cy="26" r="1.2" fill="#facc15"/>
+      <circle cx="59" cy="23" r="1.2" fill="#a3e635"/>
+      {/* Botón central PS */}
+      <ellipse cx="40" cy="20" rx="1.5" ry="1" fill="#64748b"/>
+      {/* Gatillos (superior) */}
+      <rect x="18" y="8" width="6" height="2" rx="1" fill="#cbd5e1"/>
+      <rect x="56" y="8" width="6" height="2" rx="1" fill="#cbd5e1"/>
+    </svg>
+    </div>
+    <h1 className="kinggames-title mb-4 animate-pulse">
+      ¡BIENVENIDO A<br />
+      <span className="kinggames-main">KINGGAMERS!</span>
+    </h1>
+    <p className="kinggames-desc text-lg drop-shadow">
+      Por favor, inicia sesión con tu cuenta.<br />
+      Si no posees una, por favor regístrate.
+    </p>
   </div>
-  <h1 className="kinggames-title mb-4 animate-pulse">
-    ¡BIENVENIDO A<br />
-    <span className="kinggames-main">KINGGAMERS!</span>
-  </h1>
-  <p className="kinggames-desc text-lg drop-shadow">
-    Por favor, inicia sesión con tu cuenta.<br />
-    Si no posees una, por favor regístrate.
-  </p>
-</div>
       {/* Contenedor login alineado a la derecha */}
       <div className="login-container">
         <AnimatePresence mode="wait">

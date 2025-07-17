@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Exponer el puerto 3000 para el servidor
-EXPOSE 5173
+EXPOSE 5174
 
 # Definir el comando de inicio para la aplicación
 CMD ["npm", "start"]

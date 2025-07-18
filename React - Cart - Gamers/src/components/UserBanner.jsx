@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+//#region API: para el posicionamiento de la captura del usuario logueado
 const UserBanner = () => {
   const [userName, setUserName] = useState("");
 
@@ -18,5 +19,7 @@ const UserBanner = () => {
     </div>
   );
 };
+//#endregion END function UserBanner
+
 
 export default UserBanner;

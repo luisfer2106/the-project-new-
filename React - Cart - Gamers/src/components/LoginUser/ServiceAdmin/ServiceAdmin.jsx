@@ -1,13 +1,13 @@
-// ✅ Servicio: fetchUserData.js
 import axios from "axios";
 
+//#region API: paravalidar usuarios y admin
 const API_URL = "/api/UserGamers/login"; // Proxy configurado en Vite evita CORS
 
 export const fetchUserData = async (username, password) => {
   try {
     const body = {
       USERNAME: username,
-      CONTRASENA_HASH: password, // 🛡️ Sin Ñ, asegúrate que coincida con el backend
+      CONTRASENA_HASH: password, 
     };
 
     const response = await axios.post(API_URL, body, {
@@ -20,10 +20,8 @@ export const fetchUserData = async (username, password) => {
 
     console.log("✅ Datos obtenidos:", response.data);
 
-    // 📦 Retorna también el id_rol
+    //  Retorna también el id_rol
     if (response.data.message === "¡Logueado con éxito!") {
-  // ✅ Guarda el nombre en sessionStorage
-       
 
         return {
           success: true,
@@ -60,4 +58,4 @@ export const fetchUserData = async (username, password) => {
     }
   }
 };
-
+//#endregion API: paravalidar usuarios y admin

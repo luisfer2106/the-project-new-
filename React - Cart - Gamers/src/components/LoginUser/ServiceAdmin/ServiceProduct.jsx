@@ -1,6 +1,7 @@
 // ✅ Servicio: ServiceProduct.js
 import axios from "axios";
 
+//#region API: obtener productos
 const API_URL = "/api/UserGamers/productos"; // Usa el proxy de Vite
 
 export const fetchProductData = async () => {
@@ -19,3 +20,4 @@ export const fetchProductData = async () => {
     return [];
   }
 };
+//#endregion END function fetchProductData

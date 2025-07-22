@@ -123,7 +123,7 @@ function Header({ setFilteredProducts, setSearchTerm }) {
           <span>
             Bienvenido, <strong>{userName}</strong>
           </span>
-          <button
+          <button 
             className="logout-button text-white hover:text-red-400"
             onClick={confirmLogout}
             title="Cerrar sesión"

@@ -29,12 +29,30 @@ function Login() {
     return () => document.body.classList.remove('body-login');
   }, []);
 
-  //#region MÉTODO-REGISTRAR: Para enivar parametros a api registrar
-  const handleRegisterSubmit = (e) => {
+  //#region MÉTODO-REGISTRAR: Para enviar parámetros a API registrar
+  const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-    console.log("Registro:", fullName, lastName, idNumber, email, phone);
+
+    const userData = {
+      username,
+      firstName,
+      lastName,
+      idNumber,
+      email,
+      phone,
+      password
+    };
+
+    try {
+      const result = await registerUser(userData);
+      console.log("🎉 Registro exitoso:", result);
+      alert("Usuario registrado correctamente");
+    } catch (error) {
+      console.error("❌ Error al registrar usuario:", error.message);
+      alert("Error al registrar usuario");
+    }
   };
-//#endregion
+  //#endregion
 
   //#region MÉTODO-ACTUALIZAR: Para actualizar los los registros en mi api USERNAME
   const handleForgotSubmit = (e) => {
@@ -211,28 +229,30 @@ function Login() {
 
           ) : null}
 
-          {showRegisterForm && (
-            <motion.form
-              key="register"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ duration: 0.5 }}
-              className="register-form bg-white p-8 rounded-l-lg shadow-lg w-96 h-full flex flex-col justify-center"
-              onSubmit={handleRegisterSubmit}
-            >
-              <h2 className="text-center text-xl mb-4">Registro de Usuario</h2>
+      {showRegisterForm && (
+          <motion.form
+            key="register"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.5 }}
+            className="register-form bg-white p-8 rounded-l-lg shadow-lg w-96 h-full flex flex-col justify-center"
+            onSubmit={handleRegisterSubmit}
+          >
+            <h2 className="text-center text-xl mb-4">Registro de Usuario</h2>
 
-              <input type="text" placeholder="Nombres" className="w-full p-2 mb-3 border rounded" value={fullName} onChange={(e) => setFullName(e.target.value)} />
-              <input type="text" placeholder="Apellidos" className="w-full p-2 mb-3 border rounded" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-              <input type="text" placeholder="Cédula o RIF" className="w-full p-2 mb-3 border rounded" value={idNumber} onChange={(e) => setIdNumber(e.target.value)} />
-              <input type="email" placeholder="Correo Electrónico" className="w-full p-2 mb-3 border rounded" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <input type="tel" placeholder="Número de Teléfono" className="w-full p-2 mb-3 border rounded" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" placeholder="Nombres" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <input type="text" placeholder="Apellidos" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <input type="text" placeholder="Cédula o RIF" value={idNumber} onChange={(e) => setIdNumber(e.target.value)} />
+            <input type="email" placeholder="Correo Electrónico" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="tel" placeholder="Número de Teléfono" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-              <button type="submit" className="w-full bg-green-500 text-white p-2 rounded">Registrar</button>
-              <button onClick={() => setShowRegisterForm(false)} className="w-full bg-red-500 text-white p-2 rounded mt-2">Cancelar</button>
-            </motion.form>
-          )}
+            <button type="submit" className="w-full bg-green-500 text-white p-2 rounded">Registrar</button>
+            <button type="button" onClick={() => setShowRegisterForm(false)} className="w-full bg-red-500 text-white p-2 rounded mt-2">Cancelar</button>
+          </motion.form>
+        )}
 
           {showForgotPasswordForm && (
             <motion.form

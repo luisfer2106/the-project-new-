@@ -140,8 +140,8 @@ const AdminProduct = () => {
       <div className="relative z-10">
         <div className="admin-wrapper">
           <div className="admin-actions" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <button className="admin-button" onClick={handleAgregar}>
-              <FiPlus size={20} /> {/* Ícono de agregar */}
+            <button className="admin-button" data-testid="btn-agregar" onClick={handleAgregar}>
+              <FiPlus size={20} />
             </button>
             <button className="logout-button" onClick={handleLogout} style={{ marginLeft: 'auto' }}>
               <FiLogOut size={20} /> {/* Ícono de cerrar sesión */}

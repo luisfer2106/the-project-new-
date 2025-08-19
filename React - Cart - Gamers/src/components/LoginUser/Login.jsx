@@ -8,6 +8,7 @@ import { FaSignInAlt } from "react-icons/fa";
 ///import VideoFondo from "../VideoFondo/VideoFondo";
 import { fetchUserData } from './ServiceAdmin/ServiceAdmin';
 import { useNavigate } from "react-router-dom";
+import { registerUser } from './ServiceUser'; // Asegúrate de que la ruta sea correcta
 
 
 function Login() {
@@ -30,62 +31,73 @@ function Login() {
   }, []);
 
   //#region MÉTODO-REGISTRAR: Para enviar parámetros a API registrar
-  const handleRegisterSubmit = async (e) => {
-    e.preventDefault();
+    const handleRegisterSubmit = async (e) => {
+      e.preventDefault();
 
-    const userData = {
-      username,
-      firstName,
-      lastName,
-      idNumber,
-      email,
-      phone,
-      password
+      const userData = {
+        username,
+        nombre: fullName,
+        apellido: lastName,
+        cedula_rif: idNumber,
+        correo_electronico: email,
+        numero_telefono: phone,
+        contrasena_clara: password
+      };
+
+      try {
+        const result = await registerUser(userData);
+        console.log("🎉 Registro exitoso:", result);
+        alert("Usuario registrado correctamente");
+
+        // Limpiar los campos
+        setUsername("");
+        setFullName("");
+        setLastName("");
+        setIdNumber("");
+        setEmail("");
+        setPhone("");
+        setPassword("");
+      } catch (error) {
+        console.error("❌ Error al registrar usuario:", error.message);
+        alert("Error al registrar usuario");
+      }
+
     };
-
-    try {
-      const result = await registerUser(userData);
-      console.log("🎉 Registro exitoso:", result);
-      alert("Usuario registrado correctamente");
-    } catch (error) {
-      console.error("❌ Error al registrar usuario:", error.message);
-      alert("Error al registrar usuario");
-    }
-  };
   //#endregion
 
+
   //#region MÉTODO-ACTUALIZAR: Para actualizar los los registros en mi api USERNAME
-  const handleForgotSubmit = (e) => {
-    e.preventDefault();
-    console.log("Recuperar contraseña para:", forgotEmail);
+    const handleForgotSubmit = (e) => {
+      e.preventDefault();
+      console.log("Recuperar contraseña para:", forgotEmail);
 
-    emailjs.send(
-    "service_nmd4eoo",  // Service ID
-    "template_iznbf9p",  // Template ID
-    { email: forgotEmail }, // Aquí se pasa el correo ingresado en el formulario
-    "175MgSp03ESZTSnXE"  // Public Key
-    )
-    .then((response) => {
-      console.log("Correo enviado correctamente", response);
-      Swal.fire({
-      position: "top-start",
-      icon: "success",
-      title: "<h3 style='font-size: 14px;'>Correo enviado correctamente</h3>",
-      showConfirmButton: false,
-      timer: 1700,
-      width: "200px", // Ajusta el ancho de la alerta
-      padding: "13px", // Reduce el espacio interno
-      customClass: {
-        popup: "swal-compact" // Modificación directa del tamaño del cuadro
-      }
-    });
+      emailjs.send(
+      "service_nmd4eoo",  // Service ID
+      "template_iznbf9p",  // Template ID
+      { email: forgotEmail }, // Aquí se pasa el correo ingresado en el formulario
+      "175MgSp03ESZTSnXE"  // Public Key
+      )
+      .then((response) => {
+        console.log("Correo enviado correctamente", response);
+        Swal.fire({
+        position: "top-start",
+        icon: "success",
+        title: "<h3 style='font-size: 14px;'>Correo enviado correctamente</h3>",
+        showConfirmButton: false,
+        timer: 1700,
+        width: "200px", // Ajusta el ancho de la alerta
+        padding: "13px", // Reduce el espacio interno
+        customClass: {
+          popup: "swal-compact" // Modificación directa del tamaño del cuadro
+        }
+      });
 
 
-    })
-    .catch((error) => {
-      console.error("Error al enviar el correo", error);
-    });
-  };
+      })
+      .catch((error) => {
+        console.error("Error al enviar el correo", error);
+      });
+    };
   //#endregion
 
   //#region MÉTODO: Para recibir y enviar parametros a mi service / LOGIN
@@ -229,30 +241,31 @@ function Login() {
 
           ) : null}
 
-      {showRegisterForm && (
-          <motion.form
-            key="register"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            transition={{ duration: 0.5 }}
-            className="register-form bg-white p-8 rounded-l-lg shadow-lg w-96 h-full flex flex-col justify-center"
-            onSubmit={handleRegisterSubmit}
-          >
-            <h2 className="text-center text-xl mb-4">Registro de Usuario</h2>
+          {showRegisterForm && (
+            <motion.form
+              key="register"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5 }}
+              className="register-form bg-white p-8 rounded-l-lg shadow-lg w-96 h-full flex flex-col justify-center"
+              onSubmit={handleRegisterSubmit}
+            >
+              <h2 className="text-center text-xl mb-4">Registro de Usuario</h2>
 
-            <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-            <input type="text" placeholder="Nombres" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-            <input type="text" placeholder="Apellidos" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-            <input type="text" placeholder="Cédula o RIF" value={idNumber} onChange={(e) => setIdNumber(e.target.value)} />
-            <input type="email" placeholder="Correo Electrónico" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="tel" placeholder="Número de Teléfono" value={phone} onChange={(e) => setPhone(e.target.value)} />
-            <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input type="text" placeholder="Username" className="w-full p-2 mb-3 border rounded" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <input type="text" placeholder="Nombres" className="w-full p-2 mb-3 border rounded" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+              <input type="text" placeholder="Apellidos" className="w-full p-2 mb-3 border rounded" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+              <input type="text" placeholder="Cédula o RIF" className="w-full p-2 mb-3 border rounded" value={idNumber} onChange={(e) => setIdNumber(e.target.value)} />
+              <input type="email" placeholder="Correo Electrónico" className="w-full p-2 mb-3 border rounded" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <input type="tel" placeholder="Número de Teléfono" className="w-full p-2 mb-3 border rounded" value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <input type="tel" placeholder="Contraseña" className="w-full p-2 mb-3 border rounded" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-            <button type="submit" className="w-full bg-green-500 text-white p-2 rounded">Registrar</button>
-            <button type="button" onClick={() => setShowRegisterForm(false)} className="w-full bg-red-500 text-white p-2 rounded mt-2">Cancelar</button>
-          </motion.form>
-        )}
+              <button type="submit" className="w-full bg-green-500 text-white p-2 rounded">Registrar</button>
+              <button type="button" onClick={() => setShowRegisterForm(false)} className="w-full bg-red-500 text-white p-2 rounded mt-2">Cancelar</button>
+
+            </motion.form>
+          )}
 
           {showForgotPasswordForm && (
             <motion.form

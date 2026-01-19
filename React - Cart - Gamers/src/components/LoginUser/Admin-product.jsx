@@ -44,15 +44,38 @@ const AdminProduct = () => {
     setModalOpen(true);
   };
 
-  const handleOk = () => {
-    setModalText("El modal se cerrará en dos segundos");
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setModalOpen(false);
-      setConfirmLoading(false);
-      setModalText("Content of the modal");
-    }, 2000);
-  };
+    const handleOk = async () => {
+      setModalText("Registrando producto...");
+      setConfirmLoading(true);
+
+      const productData = {
+        nombre,
+        descripcion,
+        cantidad: parseInt(cantidad),
+        plataforma: parseInt(plataforma),
+        imagen
+      };
+
+      try {
+        await registerProduct(productData);
+        setModalText("Producto registrado correctamente");
+        setTimeout(() => {
+          setModalOpen(false);
+          setConfirmLoading(false);
+          setModalText("Content of the modal");
+          // Limpia los campos si quieres:
+          setNombre("");
+          setDescripcion("");
+          setCantidad("");
+          setPlataforma("");
+          setImagen("");
+        }, 2000);
+      } catch (error) {
+        setModalText("Error al registrar producto");
+        setConfirmLoading(false);
+      }
+    };
+
 
   const handleCancel = () => {
     setModalOpen(false);
@@ -149,61 +172,61 @@ const AdminProduct = () => {
           </div>
 
           {/* Modal de Ant Design */}
-          <Modal
-            title="Agregar producto"
-            open={modalOpen}
-            onOk={handleOk}
-            confirmLoading={confirmLoading}
-            onCancel={handleCancel}
-          >
-            <form>
-              <div style={{ marginBottom: 10 }}>
-                <label>Nombre:</label>
-                <input
-                  type="text"
-                  value={nombre}
-                  onChange={e => setNombre(e.target.value)}
-                  style={{ width: "100%" }}
-                />
-              </div>
-              <div style={{ marginBottom: 10 }}>
-                <label>Descripción:</label>
-                <input
-                  type="text"
-                  value={descripcion}
-                  onChange={e => setDescripcion(e.target.value)}
-                  style={{ width: "100%" }}
-                />
-              </div>
-              <div style={{ marginBottom: 10 }}>
-                <label>Cantidad:</label>
-                <input
-                  type="number"
-                  value={cantidad}
-                  onChange={e => setCantidad(e.target.value)}
-                  style={{ width: "100%" }}
-                />
-              </div>
-              <div style={{ marginBottom: 10 }}>
-                <label>Plataforma:</label>
-                <input
-                  type="text"
-                  value={plataforma}
-                  onChange={e => setPlataforma(e.target.value)}
-                  style={{ width: "100%" }}
-                />
-              </div>
-              <div style={{ marginBottom: 10 }}>
-                <label>Imagen (URL):</label>
-                <input
-                  type="text"
-                  value={imagen}
-                  onChange={e => setImagen(e.target.value)}
-                  style={{ width: "100%" }}
-                />
-              </div>
-            </form>
-          </Modal>
+         <Modal
+          title="Agregar producto"
+          open={modalOpen}
+          onOk={handleOk}
+          confirmLoading={confirmLoading}
+          onCancel={handleCancel}
+        >
+          <form>
+            <div style={{ marginBottom: 10 }}>
+              <label>Nombre:</label>
+              <input
+                type="text"
+                value={nombre}
+                onChange={e => setNombre(e.target.value)}
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div style={{ marginBottom: 10 }}>
+              <label>Plataforma:</label>
+              <input
+                type="text"
+                value={descripcion}
+                onChange={e => setDescripcion(e.target.value)}
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div style={{ marginBottom: 10 }}>
+              <label>Descripción:</label>
+              <input
+                type="number"
+                value={cantidad}
+                onChange={e => setCantidad(e.target.value)}
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div style={{ marginBottom: 10 }}>
+              <label>Fecha:</label>
+              <input
+                type="number"
+                value={plataforma}
+                onChange={e => setPlataforma(e.target.value)}
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div style={{ marginBottom: 10 }}>
+              <label>Hora:</label>
+              <input
+                type="text"
+                value={imagen}
+                onChange={e => setImagen(e.target.value)}
+                style={{ width: "100%" }}
+              />
+            </div>
+          </form>
+        </Modal>
 
           <div className="tabla-productos shadow-table">
             <DataTable
@@ -211,7 +234,7 @@ const AdminProduct = () => {
               columns={columns}
               data={filteredData}
               pagination
-              highlightOnHover
+              highlightOnHover1
               responsive
               subHeader
               subHeaderComponent={
@@ -229,6 +252,7 @@ const AdminProduct = () => {
       </div>
     </div>
   );
+
 };
 
 export default AdminProduct;
